@@ -57,10 +57,11 @@ const Login = () => {
     }
     return (
         <>
-
+            <div className="container text-center">
+                Login
+            </div>
             <form className="form-style-9" onSubmit={handleSubmit(onSubmit)}>
                 <ul>
-
                     <li>
                         <input
                             {...register('name', { required: true })}

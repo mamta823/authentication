@@ -20,9 +20,7 @@ function App() {
         <Navbar />
 
         <Routes>
-
-          {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
-          <Route path="/login" replace element={<Loginpage />} />
+          <Route path="/" replace element={<Loginpage />} />
           <Route path="/users" element={<Authprovider ><Users />  </Authprovider >} />
 
         </Routes>

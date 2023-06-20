@@ -21,8 +21,9 @@ const Navbar = () => {
             <div className="container-fluid d-flex">
                 <Nav className="justify-content-center navbar" >
                     <Nav.Item>
-                        {!token ? <Link Link index className={path.pathname === "/" ? "active" : ""} to="/">Login </Link> :
-                            <button className="logout-btn" onClick={() => handleLogout()}>logout</button>
+                        {/* <Link index className={path.pathname === "/" ? "active" : ""} to="/">Login </Link> */}
+                        {token ?
+                            <button className="logout-btn" onClick={() => handleLogout()}>logout</button> : ""
                         }
                         {token && <Link className={path.pathname === "/users" ? "active" : ""} to="/users">Users </Link>}
                     </Nav.Item>
