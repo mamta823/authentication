@@ -77,10 +77,11 @@ function Updatusermodal(props) {
     }
 
 
-    // useEffect(() => {
-    //     setValue('name', props.editdata?.name,)
-    //     setValue('password', props.editdata?.password)
-    // }, [props.editdata])
+    useEffect(() => {
+        setValue('name', props.editdata?.name,)
+        setValue('password', props.editdata?.password)
+        setValue('age', 11)
+    }, [props.editdata])
     return (
         <>
 
