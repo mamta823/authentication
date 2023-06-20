@@ -8,7 +8,7 @@ const Authprovider = ({ children }) => {
         const token = Cookies.get('token')
         console.log(token, "token+++")
         if (!token) {
-            navigate("/login")
+            navigate("/")
         }
     }, [])
     return children

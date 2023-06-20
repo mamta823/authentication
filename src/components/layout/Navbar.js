@@ -3,14 +3,16 @@ import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../components/index.css";
 import Cookies from 'js-cookie';
+import React from 'react';
 const Navbar = () => {
     let path = useLocation()
     const navbar = useNavigate()
     const token = Cookies.get('token')
+    console.log(token, "++++++++")
     const handleLogout = () => {
         if (token) {
             Cookies.remove('token', { path: '/', domain: window.location.hostname })
-            navbar("/login")
+            navbar("/")
         }
 
     }
@@ -19,10 +21,10 @@ const Navbar = () => {
             <div className="container-fluid d-flex">
                 <Nav className="justify-content-center navbar" >
                     <Nav.Item>
-                        {!token ? <Link index className={path.pathname === "/login" ? "active" : ""} to="/login">Login </Link> :
+                        {!token ? <Link Link index className={path.pathname === "/" ? "active" : ""} to="/">Login </Link> :
                             <button className="logout-btn" onClick={() => handleLogout()}>logout</button>
                         }
-                        <Link className={path.pathname === "/users" ? "active" : ""} to="/users">Users </Link>
+                        {token && <Link className={path.pathname === "/users" ? "active" : ""} to="/users">Users </Link>}
                     </Nav.Item>
                 </Nav>
             </div>
