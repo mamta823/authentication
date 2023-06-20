@@ -6,40 +6,41 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../components/index.css"
 import { useForm } from 'react-hook-form';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
-//
+import { Button } from 'react-bootstrap';
+// import Box from '@mui/material/Box';
+// import Button from '@mui/material/Button';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
+// import FormControl from '@mui/material/FormControl';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import Select from '@mui/material/Select';
+// import Switch from '@mui/material/Switch';
+
 
 function Updatusermodal(props) {
     console.log(props.editdata, "propssss for edit")
     const handleClose = () => props.setShow(false);
     //
-    const [fullWidth, setFullWidth] = React.useState(true);
-    const [maxWidth, setMaxWidth] = React.useState('sm');
+    // const [fullWidth, setFullWidth] = React.useState(true);
+    // const [maxWidth, setMaxWidth] = React.useState('sm');
 
 
 
-    const handleMaxWidthChange = (event) => {
-        setMaxWidth(
-            // @ts-expect-error autofill of arbitrary value is not handled.
-            event.target.value,
-        );
-    };
+    // const handleMaxWidthChange = (event) => {
+    //     setMaxWidth(
+    //         // @ts-expect-error autofill of arbitrary value is not handled.
+    //         event.target.value,
+    //     );
+    // };
 
-    const handleFullWidthChange = (event) => {
-        setFullWidth(event.target.checked);
-    };
+    // const handleFullWidthChange = (event) => {
+    //     setFullWidth(event.target.checked);
+    // };
     //
     const {
         register,
@@ -83,98 +84,10 @@ function Updatusermodal(props) {
     return (
         <>
 
-            <React.Fragment>
-                <Dialog
-                    fullWidth={fullWidth}
-                    maxWidth={maxWidth}
-                    open={props.show}
-                    onClose={handleClose}
-                >
-                    <DialogTitle>Optional sizes</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            You can set my maximum width and whether to adapt or not.
-                        </DialogContentText>
-                        <Box
-                            noValidate
-                            component="form"
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                m: 'auto',
-                                width: '100%',
-                            }}
-                        >
-                            {/* <FormControl sx={{ mt: 2, minWidth: 300 }}> */}
-                            <InputLabel htmlFor="max-width">maxWidth</InputLabel>
-                            <Select
-                                autoFocus
-                                value={maxWidth}
-                                onChange={handleMaxWidthChange}
-                                label="maxWidth"
-                                inputProps={{
-                                    name: 'max-width',
-                                    id: 'max-width',
-                                }}
-                            >
-                                <MenuItem value={false}>false</MenuItem>
-                                <MenuItem value="xs">xs</MenuItem>
-                                <MenuItem value="sm">sm</MenuItem>
-                                <MenuItem value="md">md</MenuItem>
-                                <MenuItem value="lg">lg</MenuItem>
-                                <MenuItem value="xl">xl</MenuItem>
-                            </Select>
-                            <ToastContainer />
-                            <form className="form-style-10 field-full" onSubmit={handleSubmit(onSubmit)}>
-                                <ul>
-                                    <li>
-                                        <input
-                                            {...register('name', { required: true })}
-                                            type="text" name="name" className="field-style field-full align-none" placeholder="Name"></input>
-                                        {errors.name && <p style={{ color: "red", textAlign: "left" }}> Name is required.</p>}
-                                    </li>
-                                    <li>
 
-                                        <input
-                                            {...register('password', { required: true })}
-                                            type="password" name="password" className="field-style field-full align-none" placeholder="Password" />
-                                        {errors.password && <p style={{ color: "red", textAlign: "left" }}> Password is required.</p>}
-                                    </li>
-                                    <li>
-                                        <input
-                                            {...register('age', { required: true })}
-                                            type="number" name="age" className="field-style field-full align-none" placeholder="Age" />
-                                        {errors.age && <p style={{ color: "red", textAlign: "left" }}> Age is required.</p>}
-                                    </li>
-
-                                    <li>
-                                        <input type="submit" value="Submit" />
-                                    </li>
-
-                                    <li>
-                                        <Button variant="success me-4" onClick={handleClose}>
-                                            Close
-                                        </Button>
-                                        <Button type="submit" variant="success">Edit</Button>
-                                    </li>
-                                </ul >
-                            </form >
-                            {/* </FormControl> */}
-                            <FormControlLabel
-                                sx={{ mt: 1 }}
-                                control={
-                                    <Switch checked={fullWidth} onChange={handleFullWidthChange} />
-                                }
-                                label="Full width"
-                            />
-                        </Box>
-                    </DialogContent>
-
-                </Dialog>
-            </React.Fragment>
 
             {/*  */}
-            {/* <Modal
+            <Modal
                 show={props.show}
                 onHide={handleClose}
                 backdrop="static"
@@ -201,9 +114,11 @@ function Updatusermodal(props) {
                                 {errors.password && <p style={{ color: "red", textAlign: "left" }}> Password is required.</p>}
                             </li>
                             <li>
-                                <input type="submit" value="Submit" />
+                                <input
+                                    {...register('age', { required: true })}
+                                    type="number" name="age" className="field-style field-full align-none" placeholder="Age" />
+                                {errors.age && <p style={{ color: "red", textAlign: "left" }}> Age is required.</p>}
                             </li>
-
                             <li>
                                 <Button variant="success me-4" onClick={handleClose}>
                                     Close
@@ -213,7 +128,7 @@ function Updatusermodal(props) {
                         </ul >
                     </form >
                 </Modal.Body>
-            </Modal > */}
+            </Modal >
         </>
     );
 }

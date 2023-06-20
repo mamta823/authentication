@@ -29,10 +29,8 @@ export default function ControlledAccordions(props) {
                     id="panel1bh-header"
                 >
                     {/* sx={{ width: '33%', flexShrink: 0 }} */}
-                    <Typography>
-                        {/* <button align="left" className="btn-size" onClick={() => handleExpand()} style={{ cursor: 'pointer' }} >user<FontAwesomeIcon icon={faPlus} /></button> */}
-                    </Typography>
-                    {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
+
+
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -40,9 +38,9 @@ export default function ControlledAccordions(props) {
                             <li>
                                 {`Age: ${props.data?.age}`}
                             </li>
-                            <li>
+                            {/* <li>
                                 {`Email: ${props.data?.email}`}
-                            </li>
+                            </li> */}
                         </ul>
 
 

@@ -90,11 +90,6 @@ export default function UserDashboard() {
                                         {capitalizeFirstLetter(row.name)}
                                     </TableCell>
 
-
-                                    {/* <button align="left" className="btn-size" onClick={() => handleUpdate(row.id, row)} style={{ cursor: 'pointer' }} >Update</button>
-                                        <button align="left" className="btn-size" onClick={() => handleDelete(row.id)} style={{ cursor: 'pointer' }} >Delete</button> */}
-
-
                                     <TableCell>
                                         <button align="left" className="btn-size me-3" onClick={() => handleUpdate(row.id, row)} style={{ cursor: 'pointer' }} >Update</button>
                                         <button align="left" className="btn-size" onClick={() => handleDelete(row.id)} style={{ cursor: 'pointer' }} >Delete</button>
