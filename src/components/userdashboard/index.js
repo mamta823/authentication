@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,6 +13,8 @@ import Updatusermodal from '../Updateusermodal';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 // 
 import ControlledAccordions from '../Userexpand';
+import LoaderContext from '../../context/LoaderProvider';
+
 
 export default function UserDashboard() {
     const [user, setUser] = React.useState([])
@@ -20,22 +22,29 @@ export default function UserDashboard() {
     const [show, setShow] = React.useState()
     const [userid, setUserid] = React.useState('')
     const [editdata, setEditdata] = useState()
+    const { setIsLoading } = useContext(LoaderContext);
 
+    //func to list all users
     const userDetail = async () => {
+        setIsLoading(true)
         const response = await Services.getUser()
         console.log(response.data, "ressssss")
         if (response) {
+            setIsLoading(false)
             setUser(response.data)
         }
     }
     React.useEffect(() => {
         userDetail()
     }, [])
-    const handleDelete = async (id) => {
 
+    //func to delte user below:
+    const handleDelete = async (id) => {
         setUserid(id)
         setShowdeletemodal(true)
     }
+
+    //func to update user below:
     const handleUpdate = (id, data) => {
         setUserid(id)
         setEditdata(data)
@@ -58,6 +67,7 @@ export default function UserDashboard() {
                 setEditdata={setEditdata}
                 editdata={editdata}
                 userDetail={userDetail} />
+
             <div className="container">
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -96,10 +106,6 @@ export default function UserDashboard() {
                                             userid={row.id}
                                         />
                                     </TableCell>
-                                    {/* <TableCell>
-                                        <button align="left" className="btn-size me-3" onClick={() => handleUpdate(row.id, row)} style={{ cursor: 'pointer' }} >Update</button>
-
-                                    </TableCell> */}
                                 </TableRow>
                             ))}
                         </TableBody>
