@@ -1,3 +1,16 @@
+
+/* logout btn */
+button.logout-btn {
+    margin: 0 3px;
+    list-style: none;
+    text-decoration: none;
+    color: #d06d37;
+    border: none;
+    background-color: #d06d37;
+    color: white;
+    font-size: 20px;
+    padding: 1px 3px;
+}
 .nav-item a {
     margin: 0 10px;
     list-style: none;
@@ -96,4 +109,112 @@
     font-size: 18px!important;
     color: rgb(236 234 234 / 87%)!important;
     
+}
+/* update-delte-btn */
+button.btn-size {
+    border: none;
+    color: white;
+    background-color: #ce8a39;
+    border-radius: 4px;
+    padding: 4px 9px;
+    font-size: 16px;
+}
+/* accordian */
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+  box-shadow: none!important;
+}
+.css-1ex1afd-MuiTableCell-root {
+ 
+    border-bottom:none!important;
+}
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+    display: inline-flex!important;
+}
+.MuiAccordionDetails-root.css-15v22id-MuiAccordionDetails-root p ul li {
+    list-style: none;
+    border: 1px solid;
+}
+/* form modal */
+/* .form-style-10 {
+    width: 100%;
+    background: #FAFAFA;
+    padding: 50px 30px;
+    margin: 50px auto;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid #d06d37;
+} */
+.form-style-10 {
+    /* display: flex; */
+    width: 100%;
+    background: none;
+    padding: 50px 30px;
+    /* margin: 50px auto; */
+    /* box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35); */
+    border-radius: 10px;
+    /* border: 6px solid #d06d37; */
+}
+.form-style-10 ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+.form-style-10 ul li{
+	display: block;
+	margin-bottom: 10px;
+	min-height: 35px;
+}
+.form-style-10 ul li  .field-style {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 8px;
+    outline: none;
+    /* border: 1px solid #d2cdcb; */
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    border-bottom: 1ps solid;
+    border-bottom: 1px solid #d9cdcd;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: none;
+}
+.form-style-10 ul li  .field-style:focus{
+	box-shadow: 0 0 5px #d06d37;
+	border:1px solid #d06d37;
+}
+.form-style-10 ul li .field-split{
+	width: 410%;
+}
+.form-style-10 ul li .field-full{
+	width: 100%;
+}
+.form-style-10 ul li input.align-left{
+	float:left;
+}
+.form-style-10 ul li input.align-right{
+	float:right;
+}
+.form-style-10 ul li textarea{
+	width: 100%;
+	height: 100px;
+}
+.form-style-10 ul li input[type="button"], .form-style-10 ul li input[type="submit"] {
+    box-shadow: inset 0px 1px 0px 0px #d06d37;
+    background-color: #d06d37;
+    border: 1px solid #d06d37;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 8px 18px;
+    text-decoration: none;
+    font: 12px Arial, Helvetica, sans-serif;
+}
+.form-style-10 ul li input[type="button"]:hover, 
+.form-style-10 ul li input[type="submit"]:hover {
+	background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+	background-color: #28739E;
 }

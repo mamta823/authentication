@@ -1,5 +1,5 @@
-import { getUser, loginUsers, deleteUser } from "./service"
+import { getUser, loginUsers, deleteUser, editUser } from "./service"
 const Services = {
-    getUser, loginUsers, deleteUser
+    getUser, loginUsers, deleteUser, editUser
 }
 export default Services

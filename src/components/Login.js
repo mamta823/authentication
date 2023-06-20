@@ -23,7 +23,6 @@ const Login = () => {
         handleSubmit,
         reset,
         setValue,
-        watch,
         formState: { errors, isSubmitSuccessful },
     } = useForm();
 
@@ -35,13 +34,10 @@ const Login = () => {
     }, [isSubmitSuccessful]);
 
     const onSubmit = async (data) => {
-        console.log(data, "data on submit")
-        // const payload = { ...data, createdAt: moment().format() }
         const response = await Services.loginUsers()
-        console.log(response.data, "response")
         setUsersdata(response?.data)
         if (response) {
-            toast.success('Post added successfully!', {
+            toast.success('Login successfully!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -59,7 +55,6 @@ const Login = () => {
         }
 
     }
-    console.log(usersdata, "usersdata")
     return (
         <>
 

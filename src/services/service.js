@@ -9,4 +9,7 @@ const loginUsers = async () => {
 const deleteUser = async (id) => {
     return await axiosInstance.delete(`/users/${id}`)
 }
-export { getUser, loginUsers, deleteUser }
+const editUser = async (id, payloaddata) => {
+    return await axiosInstance.put(`/users/${id}`, payloaddata)
+}
+export { getUser, loginUsers, deleteUser, editUser }

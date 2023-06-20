@@ -6,7 +6,7 @@ const Users = () => {
     return (
         <div>
             < UserDashboard />
-            <Navbar />
+            {/* <Navbar /> */}
         </div>
     )
 }
