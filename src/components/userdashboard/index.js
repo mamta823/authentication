@@ -23,15 +23,16 @@ export default function UserDashboard(props) {
     const [show, setShow] = React.useState()
     const [userid, setUserid] = React.useState('')
     const [editdata, setEditdata] = useState()
-    const [filtereddata, setFiltereddata] = useState(user)
+    const [filtereddata, setFiltereddata] = useState()
     const { setIsLoading } = useContext(LoaderContext);
     const [search, setSearch] = useState("")
-
+    const [msg, setMsg] = useState()
 
     //func to list all users
     const userDetail = async () => {
         setIsLoading(true)
         const response = await Services.getUser()
+        console.log(response.data, "userlists")
         if (response) {
             setIsLoading(false)
             setUser(response.data)
@@ -62,8 +63,12 @@ export default function UserDashboard(props) {
             return users.name.toLowerCase().includes(search.toLowerCase())
         }
         );
-        if (filtered) {
-            setFiltereddata(filtered)
+        setFiltereddata(filtered)
+
+        if (search !== '' && filtered?.length === 0) {
+            setMsg("No data found")
+        } else {
+            setMsg("")
         }
     }, [search, user])
 
@@ -90,6 +95,7 @@ export default function UserDashboard(props) {
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
+
                             <TableRow>
                                 <TableCell>Username</TableCell>
 
@@ -99,7 +105,7 @@ export default function UserDashboard(props) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {filtereddata?.map((row) => (
+                            {filtereddata && filtereddata?.map((row) => (
                                 <TableRow
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -124,6 +130,8 @@ export default function UserDashboard(props) {
                         </TableBody>
                     </Table>
                 </TableContainer>
+                <h2 className="mt-4" style={{ textAlign: 'center' }}>{msg}</h2>
+
             </div >
         </>
     );
