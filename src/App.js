@@ -10,17 +10,18 @@ import Navbar from './components/layout/Navbar';
 import { useContext } from 'react';
 import LoaderContext from './context/LoaderProvider';
 import Loader from './components/Loader';
+import Cookies from 'js-cookie';
 
 function App() {
   const { isLoading } = useContext(LoaderContext);
-  console.log(isLoading, "isLoading")
+  const token = Cookies.get('token')
+
   return (
     <Loader loading={isLoading} >
       <div style={{ height: '100vh' }} className="">
         <Navbar />
-
         <Routes>
-          <Route path="/" replace element={<Loginpage />} />
+          <Route path="/" element={<Loginpage />} />
           <Route path="/users" element={<Authprovider ><Users />  </Authprovider >} />
 
         </Routes>

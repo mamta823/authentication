@@ -23,25 +23,9 @@ import { Button } from 'react-bootstrap';
 
 
 function Updatusermodal(props) {
-    console.log(props.editdata, "propssss for edit")
+
     const handleClose = () => props.setShow(false);
-    //
-    // const [fullWidth, setFullWidth] = React.useState(true);
-    // const [maxWidth, setMaxWidth] = React.useState('sm');
 
-
-
-    // const handleMaxWidthChange = (event) => {
-    //     setMaxWidth(
-    //         // @ts-expect-error autofill of arbitrary value is not handled.
-    //         event.target.value,
-    //     );
-    // };
-
-    // const handleFullWidthChange = (event) => {
-    //     setFullWidth(event.target.checked);
-    // };
-    //
     const {
         register,
         handleSubmit,
@@ -57,11 +41,9 @@ function Updatusermodal(props) {
             props.userDetail()
         }
     }, [isSubmitSuccessful]);
-    console.log(props.userid, props.editdata, "payloaddddddddddd")
+
     const onSubmit = async (data) => {
-        // console.log(data, "payloaddddddddddd")
         const response = await Services.editUser(props.userid, data)
-        console.log(response, "teammmmmmmmmm")
         if (response) {
             toast.success('User updated successfully!', {
                 position: "top-right",
