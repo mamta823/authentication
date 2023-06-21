@@ -61,7 +61,7 @@ function Updatusermodal(props) {
 
     useEffect(() => {
         setValue('name', props.editdata?.name,)
-        setValue('password', props.editdata?.password)
+        // setValue('password', props.editdata?.password)
         setValue('age', 11)
     }, [props.editdata])
     return (
@@ -90,12 +90,12 @@ function Updatusermodal(props) {
                                     type="text" name="name" className="field-style field-full align-none" placeholder="Name"></input>
                                 {errors.name && <p style={{ color: "red", textAlign: "left" }}> Name is required.</p>}
                             </li>
-                            <li>
+                            {/* <li>
                                 <input
                                     {...register('password', { required: true })}
                                     type="password" name="password" className="field-style field-full align-none" placeholder="Password" />
                                 {errors.password && <p style={{ color: "red", textAlign: "left" }}> Password is required.</p>}
-                            </li>
+                            </li> */}
                             <li>
                                 <input
                                     {...register('age', { required: true })}

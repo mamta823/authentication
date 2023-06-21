@@ -4,8 +4,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import "../components/index.css"
 export default function ControlledAccordions(props) {
     const [expanded, setExpanded] = React.useState(false);
@@ -33,12 +31,10 @@ export default function ControlledAccordions(props) {
                             <li>
                                 {`Age: ${props.data?.age}`}
                             </li>
-                            {/* <li>
-                                {`Email: ${props.data?.email}`}
-                            </li> */}
+                            <li>
+                                {`Usertype: ${props.data?.usertype}`}
+                            </li>
                         </ul>
-
-
                     </Typography>
                 </AccordionDetails>
             </Accordion>

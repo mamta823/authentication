@@ -93,23 +93,19 @@ button.logout-btn {
 	background-color: #28739E;
 }
 /*  */
-.css-1ygcj2i-MuiTableCell-root {
+/* .css-1ygcj2i-MuiTableCell-root {
     color: rgb(251 247 247 / 87%)!important;
 	font-weight: 900!important;
     font-size: 18px!important;
 }
-.css-15wwp11-MuiTableHead-root {
-    display: table-header-group;
-    background: #0e0e0d!important;
-    color: white!important;
-}
+
 .css-1azl6jz-MuiTableCell-root {
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-weight: 900!important;
     font-size: 18px!important;
     color: rgb(236 234 234 / 87%)!important;
     
-}
+} */
 /* update-delte-btn */
 button.btn-size {
     border: none;
@@ -223,8 +219,13 @@ button.btn-size {
     /* display: flex; */
     justify-content: space-around!important;
 }
-input.MuiInputBase-input.css-yz9k0d-MuiInputBase-input {
+/* input.MuiInputBase-input.css-yz9k0d-MuiInputBase-input {
     border: 1px solid!important;
     width: 100%!important;
     border-radius: 4px!important;
-}
+} */
+/* paginataion css */
+/* .css-wjh20t-MuiPagination-ul {
+    margin: 21px 0!important;
+    justify-content: center!important;
+} */

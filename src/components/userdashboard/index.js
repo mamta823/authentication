@@ -15,9 +15,9 @@ import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import ControlledAccordions from '../Userexpand';
 import LoaderContext from '../../context/LoaderProvider';
 import SearchAppBar from '../Searchbar';
+import PaginationRounded from '../PaginationForUsers';
 
 export default function UserDashboard(props) {
-
     const [user, setUser] = React.useState([])
     const [showdeletemodal, setShowdeletemodal] = React.useState(false)
     const [show, setShow] = React.useState()
@@ -27,6 +27,11 @@ export default function UserDashboard(props) {
     const { setIsLoading } = useContext(LoaderContext);
     const [search, setSearch] = useState("")
     const [msg, setMsg] = useState()
+
+    const [page, setPage] = useState(1);
+    const perPageCount = 8
+    const handlePage = (page) => setPage(page);
+
 
     //func to list all users
     const userDetail = async () => {
@@ -40,6 +45,9 @@ export default function UserDashboard(props) {
     React.useEffect(() => {
         userDetail()
     }, [])
+    //logic for pagination data below:
+    const totalPages = Math.ceil(user.length / perPageCount);
+    // const pageContent = user.slice((page - 1) * perPageCount, page * perPageCount);
 
     //func to delte user below:
     const handleDelete = async (id) => {
@@ -70,9 +78,9 @@ export default function UserDashboard(props) {
             setMsg("")
         }
     }, [search, user])
-
     return (
         <>
+
             <Deleteuser
                 setShowdeletemodal={setShowdeletemodal}
                 showdeletemodal={showdeletemodal}
@@ -90,21 +98,22 @@ export default function UserDashboard(props) {
             <SearchAppBar
                 handleSearch={handleSearch}
             />
+
             <div className="container">
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
+                        <TableHead sx={{ background: "#0e0e0d", color: "white" }}>
 
-                            <TableRow>
-                                <TableCell>Username</TableCell>
+                            <TableRow >
+                                <TableCell sx={{ fontWeight: 900, fontSize: "18px", color: "white" }}>Username</TableCell>
 
                                 {/* <TableCell align="left">new head</TableCell> */}
-                                <TableCell align="left">Actions</TableCell>
-                                <TableCell align="left">User Type</TableCell>
+                                <TableCell sx={{ fontWeight: 900, fontSize: "18px", color: "white" }} align="left">Actions</TableCell>
+                                <TableCell sx={{ fontWeight: 900, fontSize: "18px", color: "white" }} align="left">User Type</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {filtereddata?.map((row) => (
+                            {filtereddata?.slice((page - 1) * perPageCount, page * perPageCount)?.map((row) => (
                                 <TableRow
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -130,8 +139,21 @@ export default function UserDashboard(props) {
                     </Table>
                 </TableContainer>
                 <h2 className="mt-4" style={{ textAlign: 'center' }}>{msg}</h2>
+                {/* <div className='container'>
+                    <div className='row my-5'> */}
+                {user.length > 8 && filtereddata.length > 0 ?
+                    <PaginationRounded
+                        handlePage={handlePage}
+                        page={page}
+                        count={totalPages}
+                    /> : ""
+                }
+
+                {/* </div>
+                </div> */}
 
             </div >
+
         </>
     );
 }
