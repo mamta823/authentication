@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,21 +14,24 @@ import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 // 
 import ControlledAccordions from '../Userexpand';
 import LoaderContext from '../../context/LoaderProvider';
+import SearchAppBar from '../Searchbar';
 
+export default function UserDashboard(props) {
 
-export default function UserDashboard() {
     const [user, setUser] = React.useState([])
     const [showdeletemodal, setShowdeletemodal] = React.useState(false)
     const [show, setShow] = React.useState()
     const [userid, setUserid] = React.useState('')
     const [editdata, setEditdata] = useState()
+    const [filtereddata, setFiltereddata] = useState(user)
     const { setIsLoading } = useContext(LoaderContext);
+    const [search, setSearch] = useState("")
+
 
     //func to list all users
     const userDetail = async () => {
         setIsLoading(true)
         const response = await Services.getUser()
-        console.log(response.data, "ressssss")
         if (response) {
             setIsLoading(false)
             setUser(response.data)
@@ -50,6 +53,19 @@ export default function UserDashboard() {
         setEditdata(data)
         setShow(true)
     }
+    //func to handle search data:
+    const handleSearch = (value) => {
+        setSearch(value)
+    }
+    useEffect(() => {
+        const filtered = user.filter((users) => {
+            return users.name.toLowerCase().includes(search.toLowerCase())
+        }
+        );
+        if (filtered) {
+            setFiltereddata(filtered)
+        }
+    }, [search, user])
 
     return (
         <>
@@ -67,7 +83,9 @@ export default function UserDashboard() {
                 setEditdata={setEditdata}
                 editdata={editdata}
                 userDetail={userDetail} />
-
+            <SearchAppBar
+                handleSearch={handleSearch}
+            />
             <div className="container">
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -81,7 +99,7 @@ export default function UserDashboard() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {user?.map((row) => (
+                            {filtereddata?.map((row) => (
                                 <TableRow
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

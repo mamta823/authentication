@@ -9,6 +9,8 @@ const Authprovider = ({ children }) => {
         console.log(token, "token+++")
         if (!token) {
             navigate("/")
+        } else {
+            navigate("/users")
         }
     }, [])
     return children

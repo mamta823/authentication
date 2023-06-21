@@ -8,17 +8,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import "../components/index.css"
 export default function ControlledAccordions(props) {
-    console.log(props.data
-        , "props in accordian")
     const [expanded, setExpanded] = React.useState(false);
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
-    //  const handleExpand = (id, data) => {
-    //     console.log("clicked", id)
 
-    // }
 
     return (
         <div>
