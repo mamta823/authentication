@@ -32,7 +32,6 @@ export default function UserDashboard(props) {
     const userDetail = async () => {
         setIsLoading(true)
         const response = await Services.getUser()
-        console.log(response.data, "userlists")
         if (response) {
             setIsLoading(false)
             setUser(response.data)
@@ -105,7 +104,7 @@ export default function UserDashboard(props) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {filtereddata && filtereddata?.map((row) => (
+                            {filtereddata?.map((row) => (
                                 <TableRow
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
