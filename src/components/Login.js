@@ -8,8 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import Users from '../pages/users';
 import UserDashboard from './userdashboard';
 import Cookies from 'js-cookie';
+import Googlelogin from './GoogleLogin';
+// import jwt_decode from "jwt-decode";
 
 const Login = () => {
+
     const [usersdata, setUsersdata] = useState()
     const navigate = useNavigate();
     const validationSchema = Yup.object().shape({
@@ -33,8 +36,8 @@ const Login = () => {
         }
     }, [isSubmitSuccessful]);
 
-    const onSubmit = async (data) => {
-        const response = await Services.loginUsers()
+    const onSubmit = async (gooogleauthdetail) => {
+        const response = await Services.loginUsers(gooogleauthdetail)
         setUsersdata(response?.data)
         if (response) {
             toast.success('Login successfully!', {
@@ -55,29 +58,34 @@ const Login = () => {
         }
 
     }
+
     return (
         <>
             <div className="container text-center">
                 Login
             </div>
+
             <form className="form-style-9" onSubmit={handleSubmit(onSubmit)}>
                 <ul>
                     <li>
                         <input
-                            {...register('name', { required: true })}
+                            {...register('name', { required: true, maxLength: 15 })}
                             type="text" name="name" className="field-style field-full align-none" placeholder="Name"></input>
-                        {errors.name && <p style={{ color: "red", textAlign: "left" }}> Name is required.</p>}
+                        {errors.name && <p style={{ color: "red", textAlign: "left" }}>Please check the Name.</p>}
                     </li>
                     <li>
                         <input
-                            {...register('password', { required: true })}
+                            {...register('password', { required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/ })}
                             type="password" name="password" className="field-style field-full align-none" placeholder="Password" />
-                        {errors.password && <p style={{ color: "red", textAlign: "left" }}> Password is required.</p>}
+                        {errors.password && <p style={{ color: "red", textAlign: "left" }}>Please check the password.</p>}
                     </li>
+                    < Googlelogin
+                        onSubmit={onSubmit} />
                     <li>
                         <input type="submit" value="Submit" />
                     </li>
                 </ul >
+
             </form >
 
         </>

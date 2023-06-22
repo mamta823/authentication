@@ -8,7 +8,6 @@ const Navbar = () => {
     let path = useLocation()
     const navbar = useNavigate()
     const token = Cookies.get('token')
-    console.log(token, "++++++++")
     const handleLogout = () => {
         if (token) {
             Cookies.remove('token', { path: '/', domain: window.location.hostname })
