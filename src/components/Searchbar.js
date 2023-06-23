@@ -53,10 +53,13 @@ export default function SearchAppBar({ handleSearch }) {
         <>
             <Box sx={{
                 flexGrow: 1,
+                display: "flex",
+                justifyContent: "center"
             }}>
                 <Toolbar>
                     <Search sx={{
                         border: "1px solid black"
+
                     }}>
                         <SearchIconWrapper>
                             <SearchIcon />
