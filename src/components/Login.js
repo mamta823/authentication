@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,17 +9,12 @@ import Users from '../pages/users';
 import UserDashboard from './userdashboard';
 import Cookies from 'js-cookie';
 import Googlelogin from './GoogleLogin';
+import LoaderContext from '../context/LoaderProvider';
+
 // import jwt_decode from "jwt-decode";
 
 const Login = () => {
-
-    const [usersdata, setUsersdata] = useState()
-    const navigate = useNavigate();
-    const validationSchema = Yup.object().shape({
-        password: Yup.string()
-            .min(6, 'Password must be at least 6 characters'),
-    });
-    const formOptions = { resolver: yupResolver(validationSchema) };
+    const { googleauth, setGoogleauth, login } = useContext(LoaderContext)
 
     const {
         register,
@@ -36,29 +31,16 @@ const Login = () => {
         }
     }, [isSubmitSuccessful]);
 
-    const onSubmit = async (gooogleauthdetail) => {
-        const response = await Services.loginUsers(gooogleauthdetail)
-        setUsersdata(response?.data)
-        if (response) {
-            toast.success('Login successfully!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-
-            const token = "dfFXbIIMdkgH3MiiGB9gsyEbhVw4PESkC7oZefpE9RUbIzTTQmZwRIPk40DI"
-            console.log(token, "token");
-            Cookies.set('token', token)
-            navigate("/users")
+    const onSubmit = async (googleauthdetail) => {
+        // setGoogleauth(googleauthdetail)
+        if (googleauthdetail?.access_token) {
+            Cookies.set("is_google_logged_in", true)
         }
+        const response = await Services.loginUsers(googleauthdetail?.access_token)
+        let token = "dfFXbIIMdkgH3MiiGB9gsyEbhVw4PESkC7oZefpE9RUbIzTTQmZwRIPk40DI"
 
+        login(googleauthdetail?.access_token ?? token)
     }
-
     return (
         <>
             <div className="container text-center">
@@ -79,8 +61,8 @@ const Login = () => {
                             type="password" name="password" className="field-style field-full align-none" placeholder="Password" />
                         {errors.password && <p style={{ color: "red", textAlign: "left" }}>Please check the password.</p>}
                     </li>
-                    < Googlelogin
-                        onSubmit={onSubmit} />
+                    <Googlelogin onSubmit={onSubmit} />
+
                     <li>
                         <input type="submit" value="Submit" />
                     </li>

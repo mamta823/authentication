@@ -1,19 +1,26 @@
 import Cookies from 'js-cookie'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../components/layout/Navbar'
 
 const Authprovider = ({ children }) => {
     const navigate = useNavigate()
     useEffect(() => {
         const token = Cookies.get('token')
-        console.log(token, "token+++")
         if (!token) {
             navigate("/")
-        } else {
-            navigate("/users")
         }
     }, [])
-    return children
+
+    return (
+        <>
+            <Navbar />
+            {children}
+
+        </>
+
+
+    )
 }
 
 export default Authprovider

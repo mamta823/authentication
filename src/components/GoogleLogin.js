@@ -5,7 +5,7 @@ const Googlelogin = ({ onSubmit }) => {
     const login = useGoogleLogin({
         onSuccess: tokenResponse => onSubmit(tokenResponse),
     });
-
+    // const { login } = useContext(LoaderContext)
     return (
         <>
 

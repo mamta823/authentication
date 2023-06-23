@@ -9,7 +9,6 @@ function Deleteuser(props) {
     const delteposthandler = async () => {
         // setIsLoading(true)
         const response = await Services.deleteUser(props.userid)
-        console.log(response, "delete")
         if (response) {
             // setIsLoading(false)
             props.setShowdeletemodal(false)

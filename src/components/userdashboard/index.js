@@ -16,6 +16,7 @@ import ControlledAccordions from '../Userexpand';
 import LoaderContext from '../../context/LoaderProvider';
 import SearchAppBar from '../Searchbar';
 import PaginationRounded from '../PaginationForUsers';
+import { Form } from 'react-bootstrap';
 
 export default function UserDashboard(props) {
     const [user, setUser] = React.useState([])
@@ -24,10 +25,9 @@ export default function UserDashboard(props) {
     const [userid, setUserid] = React.useState('')
     const [editdata, setEditdata] = useState()
     const [filtereddata, setFiltereddata] = useState()
-    const { setIsLoading } = useContext(LoaderContext);
+    const { setIsLoading, setTheme } = useContext(LoaderContext);
     const [search, setSearch] = useState("")
     const [msg, setMsg] = useState()
-
     const [page, setPage] = useState(1);
     const perPageCount = 8
     const handlePage = (page) => setPage(page);
@@ -81,6 +81,16 @@ export default function UserDashboard(props) {
     return (
         <>
 
+            {/* <label >
+                <input
+                    type="checkbox"
+                    checked={theme === 'dark'}
+                    onChange={(e) => {
+                        setTheme(e.target.checked ? 'dark' : 'light')
+                    }}
+                />
+                Use dark mode
+            </label> */}
             <Deleteuser
                 setShowdeletemodal={setShowdeletemodal}
                 showdeletemodal={showdeletemodal}
