@@ -17,6 +17,7 @@ import LoaderContext from '../../context/LoaderProvider';
 import SearchAppBar from '../Searchbar';
 import PaginationRounded from '../PaginationForUsers';
 import { Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export default function UserDashboard(props) {
     const [user, setUser] = React.useState([])
@@ -25,13 +26,12 @@ export default function UserDashboard(props) {
     const [userid, setUserid] = React.useState('')
     const [editdata, setEditdata] = useState()
     const [filtereddata, setFiltereddata] = useState()
-    const { setIsLoading, setTheme } = useContext(LoaderContext);
+    const { setIsLoading } = useContext(LoaderContext);
     const [search, setSearch] = useState("")
     const [msg, setMsg] = useState()
     const [page, setPage] = useState(1);
     const perPageCount = 8
     const handlePage = (page) => setPage(page);
-
 
     //func to list all users
     const userDetail = async () => {
@@ -78,6 +78,7 @@ export default function UserDashboard(props) {
             setMsg("")
         }
     }, [search, user])
+
     return (
         <>
 

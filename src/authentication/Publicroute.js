@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/layout/Navbar'
 import LoaderContext from '../context/LoaderProvider'
 
-const Authprovider = ({ children }) => {
-    const { token, logOut } = useContext(LoaderContext)
+const Publicroute = ({ children }) => {
+    const { token } = useContext(LoaderContext)
     const navigate = useNavigate()
     useEffect(() => {
 
-        if (!token) {
-            logOut()
+        if (token) {
+            navigate("/users")
         }
     }, [token])
 
@@ -25,4 +25,4 @@ const Authprovider = ({ children }) => {
     )
 }
 
-export default Authprovider
+export default Publicroute

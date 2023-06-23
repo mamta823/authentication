@@ -40,7 +40,7 @@ export const LoaderProvider = ({ children }) => {
         navigate("/users")
 
     }
-    const logOut = (token) => {
+    const logOut = () => {
         // console.log(token, "token removed")
         setIsLoggedIn(false)
         Cookies.remove('token', { path: '/', domain: window.location.hostname })

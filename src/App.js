@@ -8,6 +8,7 @@ import Users from './pages/users';
 import { useContext } from 'react';
 import LoaderContext from './context/LoaderProvider';
 import Loader from './components/Loader';
+import Publicroute from './authentication/Publicroute';
 
 function App() {
   const { isLoading } = useContext(LoaderContext);
@@ -19,7 +20,7 @@ function App() {
       <div style={{ height: '100vh' }}>
 
         <Routes>
-          <Route path="/" element={<Loginpage />} />
+          <Route path="/" element={<Publicroute><Loginpage /></Publicroute>} />
           <Route path="/users" element={<Authprovider ><Users />  </Authprovider >} />
 
         </Routes>
