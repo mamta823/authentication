@@ -26,7 +26,7 @@ const Profiledetail = () => {
         <>
             <Stack direction="row" >
                 <Avatar alt="profile" src={profile?.picture} />
-                <ul>
+                <ul style={{ marginLeft: "0px", paddingLeft: "5px" }}>
                     <li style={{ listStyle: "none" }}>
                         {profile?.name}
                     </li>
