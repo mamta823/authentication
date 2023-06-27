@@ -17,13 +17,12 @@ export const LoaderProvider = ({ children }) => {
     useEffect(() => {
         if (token) {
             setIsLoggedIn(true)
-            // setGoogleauth(token)
         }
     }, [token])
+
+
     //login
     const login = (token) => {
-        // console.log(token, "token++++++++--")
-        // setGoogleauth(token)
         setIsLoggedIn(true)
         setIsGooglelogin(true)
         Cookies.set('token', token)
@@ -41,10 +40,9 @@ export const LoaderProvider = ({ children }) => {
 
     }
     const logOut = () => {
-        // console.log(token, "token removed")
         setIsLoggedIn(false)
-        Cookies.remove('token', { path: '/', domain: window.location.hostname })
-        Cookies.remove('is_google_logged_in', { path: '/', domain: window.location.hostname })
+        Cookies.remove('token', { expires: 1, path: '/', domain: "" })
+        Cookies.remove('is_google_logged_in', { expires: 1, path: '/', domain: "" })
         navigate("/")
     }
     return (

@@ -1,14 +1,15 @@
-import React from 'react'
-import Navbar from '../components/layout/Navbar'
-import UserDashboard from '../components/userdashboard'
+import React from "react";
+import Navbar from "../components/layout/Navbar"
+import UserDashboard from "../components/userdashboard";
 
 const Users = () => {
-    return (
-        <div>
-            < UserDashboard />
-            {/* <Navbar /> */}
-        </div>
-    )
-}
+  return (
+    <div>
+      <Navbar />
+      <UserDashboard />
+      {/* <Navbar /> */}
+    </div>
+  );
+};
 
-export default Users
+export default Users;

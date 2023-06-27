@@ -1,28 +1,28 @@
-import Cookies from 'js-cookie'
-import React, { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Navbar from '../components/layout/Navbar'
-import LoaderContext from '../context/LoaderProvider'
+import Cookies from "js-cookie";
+import React, { useContext,useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/layout/Navbar";
+import LoaderContext from "../context/LoaderProvider";
 
 const Publicroute = ({ children }) => {
-    const { token } = useContext(LoaderContext)
-    const navigate = useNavigate()
-    useEffect(() => {
+  const { token } = useContext(LoaderContext);
+  const navigate = useNavigate();
+  const [authCheked, setAuthCheked] = useState(false);
 
-        if (token) {
-            navigate("/users")
-        }
-    }, [token])
+  useEffect(() => {
+    if (token) {
+      navigate("/users");
+      setAuthCheked(false);
+    } else {
+      setAuthCheked(true);
+    }
+  }, [token]);
 
-    return (
-        <>
-            <Navbar />
-            {children}
+  return (
+    <>
+      {authCheked ? children : ""}
+    </>
+  );
+};
 
-        </>
-
-
-    )
-}
-
-export default Publicroute
+export default Publicroute;
