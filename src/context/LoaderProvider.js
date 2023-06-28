@@ -41,8 +41,8 @@ export const LoaderProvider = ({ children }) => {
     }
     const logOut = () => {
         setIsLoggedIn(false)
-        Cookies.remove('token', { expires: 1, path: '/', domain: "" })
-        Cookies.remove('is_google_logged_in', { expires: 1, path: '/', domain: "" })
+        Cookies.remove('token', { expires: 1, path: '/', domain: window.location.hostname })
+        Cookies.remove('is_google_logged_in', { expires: 1, path: '/', domain: window.location.hostname })
         navigate("/")
     }
     return (
