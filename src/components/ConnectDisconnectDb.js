@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import "../components/index.css"
 import RadioButtonsGroup from './DatabasestatusRadio';
-const ConnectDisconnectDb = (props) => {
+const ConnectDisconnectDb = (props, { handledbconnection }) => {
     console.log(props.handledbconnection, "propsssssssss")
     const handleClose = () => props.setShow(false);
 
@@ -26,10 +26,14 @@ const ConnectDisconnectDb = (props) => {
                 </Modal.Body>
                 <div>
                     <Button variant="primary" onClick={handleClose}>
-                        Skip for now
+                        Save
                     </Button>
                 </div>
-
+                <div>
+                    {/* <Button variant="primary" onClick={() => handledbconnection()}>
+                        Save
+                    </Button> */}
+                </div>
             </Modal >
         </>
     )
