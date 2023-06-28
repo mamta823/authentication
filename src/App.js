@@ -6,9 +6,10 @@ import Authprovider from './authentication/Authprovider';
 import Loginpage from './pages/Loginpage';
 import Users from './pages/users';
 import { useContext } from 'react';
-import LoaderContext from './context/LoaderProvider';
+import LoaderContext from './context/ContextProvider';
 import Loader from './components/Loader';
 import Publicroute from './authentication/Publicroute';
+import Siteconfigureration from './pages/siteconfigureration';
 
 function App() {
   const { isLoading } = useContext(LoaderContext);
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Publicroute><Loginpage /></Publicroute>} />
           <Route path="/users" element={<Authprovider ><Users />  </Authprovider >} />
+          <Route path="/siteconfig" element={<Authprovider><Siteconfigureration /></Authprovider>} />
 
         </Routes>
       </div>

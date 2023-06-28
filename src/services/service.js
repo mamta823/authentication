@@ -12,4 +12,10 @@ const deleteUser = async (id) => {
 const editUser = async (id, payloaddata) => {
     return await axiosInstance.put(`/users/${id}`, payloaddata)
 }
-export { getUser, loginUsers, deleteUser, editUser }
+const getInitialdata = async () => {
+    return await axiosInstance.get(`/Config`)
+}
+const updateSite = async (id, payload) => {
+    return await axiosInstance.put(`/Config/${id}`, payload)
+}
+export { getUser, loginUsers, deleteUser, editUser, updateSite, getInitialdata }

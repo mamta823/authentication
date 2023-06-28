@@ -10,16 +10,20 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="container-fluid d-flex justify-content-between">
+      <div className="container-fluid d-flex justify-content-between navbar-border">
         <Nav className="justify-content-center navbar">
           <Nav.Item>
-            {/* <Link index className={path.pathname === "/" ? "active" : ""} to="/">Login </Link> */}
-
             <Link
               className={path.pathname === "/users" ? "active" : ""}
               to="/users"
             >
               Users{" "}
+            </Link>
+            <Link
+              className={path.pathname === "/siteconfig" ? "active" : ""}
+              to="/siteconfig"
+            >
+              Siteconfig{" "}
             </Link>
           </Nav.Item>
         </Nav>

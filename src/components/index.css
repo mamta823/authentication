@@ -1,3 +1,33 @@
+.navbar-border  {
+    border-bottom: 2px solid lightgray;
+    padding: 4px 7px;
+    margin: 0 0 27px 0;
+}
+/* connected-btn */
+.changecolor {
+    background: burlywood;
+    padding: 4px 11px;
+    color: white;
+}
+.connect {
+    /* border: 1px solid black; */
+    padding: 4px 10px;
+    background: #8080802e;
+}
+/*  */
+/* btn */
+button.btn.btn-primary {
+    margin: 11px 16px;
+    display: block;
+    margin: 12px auto!important;
+    /* padding: 4px 14px; */
+    width: 50%;
+    border-radius: 0px;
+}
+
+/* db-status css */
+
+/*  */
 .profile-design.mt-2 {
     display: flex;
     align-items: center;
@@ -23,10 +53,11 @@ button.logout-btn {
     font-size:23px;
 }
 .active {
-    background-color: #d06d37;
-    color: white!important;
+
+    color: #cf5f13!important;
     font-size: 18px;
     padding: 3px 5px;
+    border-bottom: 2px solid #1955d899;
 }
 /*  */
 .form-style-9 {

@@ -9,7 +9,7 @@ import Users from '../pages/users';
 import UserDashboard from './userdashboard';
 import Cookies from 'js-cookie';
 import Googlelogin from './GoogleLogin';
-import LoaderContext from '../context/LoaderProvider';
+import LoaderContext from '../context/ContextProvider';
 
 // import jwt_decode from "jwt-decode";
 

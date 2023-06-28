@@ -5,13 +5,17 @@ import { toast } from 'react-toastify';
 
 
 const LoaderContext = createContext();
-export const LoaderProvider = ({ children }) => {
+export const ContextProvider = ({ children }) => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
     const [theme, setTheme] = useState('light');
     const [googleauth, setGoogleauth] = useState(null);
     const [isLogin, setIsLoggedIn] = useState(false)
     const [isGooglelogin, setIsGooglelogin] = useState(false)
+    const [config, setConfig] = useState(false)
+    const [portnumber, setPortnumber] = useState("")
+    const [dbStatus, setDbStatus] = useState(false)
+    const [emailConnection, setEmailConnection] = useState(false)
     const token = Cookies.get('token')
 
     useEffect(() => {
@@ -46,7 +50,7 @@ export const LoaderProvider = ({ children }) => {
         navigate("/")
     }
     return (
-        <LoaderContext.Provider value={{ isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin }}>
+        <LoaderContext.Provider value={{ setEmailConnection, emailConnection, setDbStatus, dbStatus, setPortnumber, portnumber, isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin, setConfig, config }}>
             {children}
         </LoaderContext.Provider>
     );

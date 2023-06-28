@@ -13,7 +13,7 @@ import Updatusermodal from '../Updateusermodal';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 // 
 import ControlledAccordions from '../Userexpand';
-import LoaderContext from '../../context/LoaderProvider';
+import LoaderContext from '../../context/ContextProvider';
 import SearchAppBar from '../Searchbar';
 import PaginationRounded from '../PaginationForUsers';
 import { Form } from 'react-bootstrap';

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import LoaderContext from '../context/LoaderProvider'
+import LoaderContext from '../context/ContextProvider'
 import getProfileData from '../services/getUserNameFromEmail'
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';

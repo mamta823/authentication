@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
-import React, { useContext,useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
-import LoaderContext from "../context/LoaderProvider";
+import LoaderContext from "../context/ContextProvider";
 
 const Publicroute = ({ children }) => {
   const { token } = useContext(LoaderContext);

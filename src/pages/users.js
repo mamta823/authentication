@@ -7,7 +7,6 @@ const Users = () => {
     <div>
       <Navbar />
       <UserDashboard />
-      {/* <Navbar /> */}
     </div>
   );
 };
