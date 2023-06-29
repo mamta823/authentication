@@ -3,11 +3,13 @@ import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../components/index.css";
 import Cookies from "js-cookie";
-import React from "react";
+import React, { useContext } from "react";
 import Profiledetail from "../Profiledetail";
+import LoaderContext from "../../context/ContextProvider";
+import { Button } from "@mui/material";
 const Navbar = () => {
   let path = useLocation();
-
+  const { token, logOut } = useContext(LoaderContext)
   return (
     <>
       <div className="container-fluid d-flex justify-content-between navbar-border">
@@ -30,6 +32,7 @@ const Navbar = () => {
         <div className="profile-design mt-2">
           {" "}
           <Profiledetail />
+          <div className="container-fluid">  <Button onClick={() => logOut()} variant="outlined">Logout</Button></div>
         </div>
       </div>
     </>

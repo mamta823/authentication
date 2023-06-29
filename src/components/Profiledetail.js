@@ -35,7 +35,7 @@ const Profiledetail = () => {
                     </li>
                 </ul>
             </Stack>
-            <div className="container-fluid">  <Button onClick={() => logOut()} variant="outlined">Logout</Button></div>
+            {/* <div className="container-fluid">  <Button onClick={() => logOut()} variant="outlined">Logout</Button></div> */}
 
         </>
     )

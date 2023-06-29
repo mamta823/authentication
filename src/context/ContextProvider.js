@@ -24,7 +24,7 @@ export const ContextProvider = ({ children }) => {
         console.log(token, "token in login")
         setIsLoggedIn(true)
         setIsGooglelogin(true)
-        Cookies.set('token', token)
+        Cookies.set('token', token, { path: '/', domain: window.location.hostname })
         toast.success('Login successfully!', {
             position: "top-right",
             autoClose: 5000,
@@ -38,7 +38,7 @@ export const ContextProvider = ({ children }) => {
         navigate("/users")
 
     }
-    const token = Cookies.get('token')
+    var token = Cookies.get('token')
     console.log(token, "topken in context")
     useEffect(() => {
         if (token) {
@@ -46,18 +46,13 @@ export const ContextProvider = ({ children }) => {
         }
     }, [token])
 
+
     const logOut = () => {
-        const token = Cookies.get('token')
         setIsLoggedIn(false)
-        setIsGooglelogin(false)
-        if (token) {
-            Cookies.remove('token', { path: '/', domain: window.location.hostname })
-        }
-        console.log(window.location.hostname, "domain")
-        Cookies.remove('is_google_logged_in', { path: '/', domain: window.location.hostname })
+        Cookies.remove('token', { expires: 1, path: '/', domain: window.location.hostname })
+        Cookies.remove('is_google_logged_in', { expires: 1, path: '/', domain: window.location.hostname })
         navigate("/")
     }
-
 
     return (
         <LoaderContext.Provider value={{ setEmailConnection, emailConnection, setDbStatus, dbStatus, setPortnumber, portnumber, isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin, setConfig, config, siteurl, setSiteurl }}>
