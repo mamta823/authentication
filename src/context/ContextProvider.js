@@ -57,6 +57,8 @@ export const ContextProvider = ({ children }) => {
         Cookies.remove('is_google_logged_in', { path: '/', domain: window.location.hostname })
         navigate("/")
     }
+
+
     return (
         <LoaderContext.Provider value={{ setEmailConnection, emailConnection, setDbStatus, dbStatus, setPortnumber, portnumber, isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin, setConfig, config, siteurl, setSiteurl }}>
             {children}
