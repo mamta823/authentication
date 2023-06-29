@@ -16,6 +16,7 @@ export const ContextProvider = ({ children }) => {
     const [portnumber, setPortnumber] = useState("")
     const [dbStatus, setDbStatus] = useState(false)
     const [emailConnection, setEmailConnection] = useState(false)
+    const [siteurl, setSiteurl] = useState("")
     const token = Cookies.get('token')
 
     useEffect(() => {
@@ -44,13 +45,14 @@ export const ContextProvider = ({ children }) => {
 
     }
     const logOut = () => {
+        console.log(token, "logout-token")
         setIsLoggedIn(false)
         Cookies.remove('token', { expires: 1, path: '/', domain: window.location.hostname })
         Cookies.remove('is_google_logged_in', { expires: 1, path: '/', domain: window.location.hostname })
         navigate("/")
     }
     return (
-        <LoaderContext.Provider value={{ setEmailConnection, emailConnection, setDbStatus, dbStatus, setPortnumber, portnumber, isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin, setConfig, config }}>
+        <LoaderContext.Provider value={{ setEmailConnection, emailConnection, setDbStatus, dbStatus, setPortnumber, portnumber, isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin, setConfig, config, siteurl, setSiteurl }}>
             {children}
         </LoaderContext.Provider>
     );

@@ -22,11 +22,11 @@ export default function RowRadioButtonsGroup({ handlemaintainceMode }) {
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="row-radio-buttons-group"
                 value={config}
-                onChange={(e) => handlemaintainceMode(e.target.value)}
+                onChange={(e) => handlemaintainceMode(e.target.value === 'true' ? true : false)}
             >
                 <FormControlLabel value={true} control={<Radio />} defaultChecked label="On" />
                 <FormControlLabel value={false} control={<Radio />} label="Off" />
             </RadioGroup>
-        </FormControl>
+        </FormControl >
     );
 }

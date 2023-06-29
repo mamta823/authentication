@@ -29,11 +29,6 @@ const ConnectDisconnectDb = (props, { handledbconnection }) => {
                         Save
                     </Button>
                 </div>
-                <div>
-                    {/* <Button variant="primary" onClick={() => handledbconnection()}>
-                        Save
-                    </Button> */}
-                </div>
             </Modal >
         </>
     )

@@ -15,7 +15,7 @@ export default function RadioButtonsGroup({ handledbconnection }) {
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="on"
                 name="radio-buttons-group"
-                onChange={(e) => handledbconnection(e.target.value)}
+                onChange={(e) => handledbconnection(e.target.value === 'true' ? true : false)}
                 value={dbStatus}
             >
                 <FormControlLabel value={true} control={<Radio />} label="On" />

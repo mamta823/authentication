@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Publicroute><Loginpage /></Publicroute>} />
           <Route path="/users" element={<Authprovider ><Users />  </Authprovider >} />
-          <Route path="/siteconfig" element={<Authprovider><Siteconfigureration /></Authprovider>} />
+          <Route path="/siteconfig" element={<Authprovider ><Siteconfigureration /></Authprovider>} />
 
         </Routes>
       </div>

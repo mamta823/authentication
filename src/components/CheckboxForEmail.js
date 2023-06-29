@@ -11,7 +11,7 @@ export default function Checkboxes({ handleEmailConnection }) {
         <>
             <div className='d-flex align-items-baseline'>
                 <FormLabel id="demo-row-radio-buttons-group-label">Email Services</FormLabel>
-                <Checkbox {...label} value={emailConnection} onChange={(e) => handleEmailConnection(Boolean(e.target.value))} />
+                <Checkbox {...label} checked={emailConnection} onChange={(e) => handleEmailConnection(e.target.checked)} />
             </div>
         </>
     );
