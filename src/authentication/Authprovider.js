@@ -7,12 +7,11 @@ import LoaderContext from '../context/ContextProvider'
 const Authprovider = ({ children }) => {
     const { token, logOut } = useContext(LoaderContext)
     const [authCheked, setAuthCheked] = useState(false);
-
+    console.log(token, "token in authprovider")
     useEffect(() => {
         if (!token) {
             setAuthCheked(false)
             logOut()
-
         } else {
             setAuthCheked(true)
         }
