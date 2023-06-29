@@ -10,6 +10,7 @@ import Checkboxes from '../CheckboxForEmail';
 import LoaderContext from '../../context/ContextProvider';
 import Services from '../../services';
 import Cookies from 'js-cookie';
+import { toast, ToastContainer } from 'react-toastify';
 const Siteconfigue = () => {
     const token = Cookies.get('token')
     const { config,
@@ -96,6 +97,17 @@ const Siteconfigue = () => {
             const response = await Services.updateSite(id, data)
             console.log(response, "update data")
             setIsLoading(false)
+            toast.success('Site updated successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
         } catch (error) {
             console.error(error);
             setIsLoading(false)
@@ -104,6 +116,7 @@ const Siteconfigue = () => {
 
     return (
         <>
+            <ToastContainer />
             {/* dbStatus ConnectDisconnectDb*/}
             <ConnectDisconnectDb
                 handledbconnection={handledbconnection}

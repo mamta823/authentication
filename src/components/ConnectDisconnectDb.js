@@ -20,7 +20,7 @@ const ConnectDisconnectDb = (props, { handledbconnection }) => {
                     <Modal.Title>Select database Status</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ToastContainer />
+                    {/* <ToastContainer /> */}
                     <RadioButtonsGroup
                         handledbconnection={props?.handledbconnection} />
                 </Modal.Body>
