@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import "../components/index.css"
 import RadioButtonsGroup from './DatabasestatusRadio';
 const ConnectDisconnectDb = (props, { handledbconnection }) => {
-    console.log(props.handledbconnection, "propsssssssss")
     const handleClose = () => props.setShow(false);
 
     return (

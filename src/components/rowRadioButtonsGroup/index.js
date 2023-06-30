@@ -8,11 +8,6 @@ import LoaderContext from '../../context/ContextProvider';
 
 export default function RowRadioButtonsGroup({ handlemaintainceMode }) {
     const { config, setConfig } = React.useContext(LoaderContext)
-    console.log(config, "conn")
-    // const handleChange = (maintenaince) => {
-    //     console.log(maintenaince, "maintenaince")
-    //     setConfig(maintenaince)
-    // }
     return (
 
         <FormControl>

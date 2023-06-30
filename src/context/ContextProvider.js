@@ -17,7 +17,7 @@ export const ContextProvider = ({ children }) => {
     const [dbStatus, setDbStatus] = useState(false)
     const [emailConnection, setEmailConnection] = useState(false)
     const [siteurl, setSiteurl] = useState("")
-
+    const [isUrlValid, setIsUrlValid] = useState(true);
 
     //login
     const login = (token) => {
@@ -55,7 +55,7 @@ export const ContextProvider = ({ children }) => {
     }
 
     return (
-        <LoaderContext.Provider value={{ setEmailConnection, emailConnection, setDbStatus, dbStatus, setPortnumber, portnumber, isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin, setConfig, config, siteurl, setSiteurl }}>
+        <LoaderContext.Provider value={{ setEmailConnection, emailConnection, setDbStatus, dbStatus, setPortnumber, portnumber, isLoading, setIsLoading, theme, setTheme, setGoogleauth, googleauth, isLogin, setIsLoggedIn, login, logOut, token, setIsGooglelogin, isGooglelogin, setConfig, config, siteurl, setSiteurl, isUrlValid, setIsUrlValid }}>
             {children}
         </LoaderContext.Provider>
     );

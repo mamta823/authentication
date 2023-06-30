@@ -22,9 +22,11 @@ const Siteconfigue = () => {
         emailConnection,
         setIsLoading,
         siteurl,
-        setSiteurl
+        setSiteurl,
+        setIsUrlValid,
+        isUrlValid
     } = useContext(LoaderContext)
-    console.log(portnumber, "config")
+
     const [show, setShow] = useState(false)
     const [id, setId] = useState("")
 
@@ -43,12 +45,10 @@ const Siteconfigue = () => {
                 setPortnumber(response.data[0].portNumber)
                 setEmailConnection(response.data[0].emailService)
                 setSiteurl(response.data[0].sitUrl)
-                console.log(response.data[0], "responsein apidata")
                 setId(response.data[0].id)
             }
         } catch (error) {
             // Handle the error
-            console.error(error);
             setIsLoading(false)
         }
 
@@ -65,7 +65,13 @@ const Siteconfigue = () => {
     }
     //func for Site url below:
     const handleSiteUrl = (value) => {
-        setSiteurl(value)
+        const urlRegex = /^((http(s?)?):\/\/)?([wW]{3}\.)?[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/g;
+        const result = value.match(urlRegex);
+        setIsUrlValid(result !== null);
+
+        if (result !== null) {
+            setSiteurl(result);
+        }
     }
 
     //func to open  database status modal  below:
@@ -80,11 +86,9 @@ const Siteconfigue = () => {
     //func for Maintenance mode below:
     const handlemaintainceMode = (value) => {
         setConfig(value)
-        console.log(typeof value, "value in main")
     }
     //func for email services mode below:
     const handleEmailConnection = (value) => {
-        console.log(value, "emal")
         setEmailConnection(value)
     }
 
@@ -109,7 +113,6 @@ const Siteconfigue = () => {
             });
 
         } catch (error) {
-            console.error(error);
             setIsLoading(false)
         }
     }
@@ -142,6 +145,7 @@ const Siteconfigue = () => {
                         <div className={`disconnected ${!dbStatus ? 'changecolor' : 'connect'}`} onClick={(e) => handledbconnection(false)} > Disconnected</div>
                     </div>
                     {/* site-url */}
+                    <FormLabel id="demo-row-radio-buttons-group-label">Site url</FormLabel>
                     <Box
                         component="form"
                         sx={{
@@ -150,8 +154,8 @@ const Siteconfigue = () => {
                         noValidate
                         autoComplete="off"
                     >
-                        <TextField onChange={(e) => handleSiteUrl(e.target.value)} value={siteurl} id="outlined-basic" label="Site Url" variant="outlined" />
-
+                        <input type="url" onChange={(e) => handleSiteUrl(e.target.value)} name="URL" value={siteurl} id="outlined-basic" label="Site Url" variant="outlined" />
+                        {!isUrlValid && <p style={{ color: 'red' }}>Invalid URL</p>}
                     </Box>
 
                     {/* emailconnection component below */}
@@ -159,7 +163,7 @@ const Siteconfigue = () => {
                         handleEmailConnection={handleEmailConnection}
                     />
 
-                    <div> <Button onClick={() => handleUpdateConfigSite()} variant="outlined">Update</Button></div>
+                    <div> <Button disabled={!isUrlValid} onClick={() => handleUpdateConfigSite()} variant="outlined">Update</Button></div>
                 </Stack>
 
             </Container>
